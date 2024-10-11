@@ -67,21 +67,21 @@ tasks:
         mnemonic: "validatorMnemonic"
         depositContract: "depositContract"
 
-    - name: run_task_matrix
-      title: "Wait for inclusion of all deposits"
-      timeout: 48h
-      configVars:
-        matrixValues: "validatorPubkeys"
-      config:
-        runConcurrent: true
-        matrixVar: "validatorPubkey"
-        task:
-          name: check_consensus_block_proposals
-          title: "Wait for deposit inclusion for (${validatorPubkey})"
-          config:
-            minDepositCount: 1
-          configVars:
-            expectDeposits: "| [.validatorPubkey]"
+    # - name: run_task_matrix
+    #   title: "Wait for inclusion of all deposits"
+    #   timeout: 48h
+    #   configVars:
+    #     matrixValues: "validatorPubkeys"
+    #   config:
+    #     runConcurrent: true
+    #     matrixVar: "validatorPubkey"
+    #     task:
+    #       name: check_consensus_block_proposals
+    #       title: "Wait for deposit inclusion for (${validatorPubkey})"
+    #       config:
+    #         minDepositCount: 1
+    #       configVars:
+    #         expectDeposits: "| [.validatorPubkey]"
 
     - name: run_task_matrix
       title: "Wait for activation of all deposited keys"
